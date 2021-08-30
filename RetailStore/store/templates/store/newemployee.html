@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<form action="{% url 'store:employee_register' %}" method="post">
+    {% csrf_token %}
+    <p>Empoyee Name</p><br>
+    <input type="text" name="emp_name" placeholder="Enter the Employee Name"><br><br>
+    <p>Contact Number</p><br>
+    <input type="tel" name="contact" placeholder="Contact Number"><br><br>
+    <p>Address</p><br>
+    <input type="text" name="address" placeholder="Address"><br><br>
+    <p>Salary</p><br>
+    <input type="number" name="salary" placeholder="Salary"><br><br>
+    <input type="submit" value="Add Employee">
+</form>
+{% if details %}
+     alert({{ details.id }})
+{% endif %}
+{% endblock content %}

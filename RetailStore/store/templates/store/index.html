@@ -1,0 +1,39 @@
+{% extends 'store/base.html' %}
+{% block content %}
+    <div class="container">
+    {% comment %} Basic Information {% endcomment %}
+        <div class="card-deck">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Todays Sales:</div>
+                <div class="card-body">
+                <h4> {{details.sale}}</h4>
+                </div>
+                <div class="card-footer bg-success border-success">
+                    <a href="/today_sale">Link</a>
+                </div>
+            </div>
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">Employees:</div>
+                <div class="card-body">
+                    <h4>{{details.count}}</h4>
+                </div>
+                <div class="card-footer border-info">
+                    <a href="/employeedetail">Link</a>
+                </div>
+            </div>
+            <div class="card text-white bg-danger mb-3" >
+                <div class="card-header">Exempting Items:</div>
+                <div class="card-body">
+                <h4>{{details.exempting}}</h4>
+                </div>
+                <div class="card-footer bg-danger border-danger">
+                    <a href="/exempting">Link</a>
+                </div>
+            </div>
+        </div>
+        {% comment %} Home View {% endcomment %}
+        <div class="jumbotron">
+            <h2>{{details.store_name}} Store</h2>
+        </div>
+    </div>
+{% endblock content %}

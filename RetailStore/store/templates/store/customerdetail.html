@@ -1,0 +1,55 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<!--<form method="post" action="{% url 'store:customerdetail' %}">-->
+<!--    {% csrf_token %}-->
+<!--    <p>Customer ID</p>-->
+<!--    <input type="text" name="cust_id" placeholder="Enter the Customer_ID"/>-->
+<!--    <input type="submit" value="View Details">-->
+<!--</form>-->
+
+{% if details %}
+    <table>
+        <tr>
+            <th>Customer ID</th>
+            <th>Customer Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        {% for row in details %}
+        <tr>
+            <td>{{row.cust_id}}</td>
+            <td>{{row.cust_name}}</td>
+            <td>{{row.contact}}</td>
+            <td>{{row.address}}</td>
+            <td><a href="delete_cust/{{row.cust_id}}">Delete</a></td>
+            <td><a href = "edit_cust/{{row.cust_id}}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>You don't have any staff with this id!</p>
+{% endif %}
+
+
+{% endblock content %}

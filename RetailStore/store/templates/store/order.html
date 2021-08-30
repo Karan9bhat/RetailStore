@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+{% if new_order %}
+    <form action="{% url 'store:insert_order' %}" method="post">
+        {% csrf_token %}
+        <p>Qunatity: {{ new_order.tot_quantity }}</p>
+        <p>Total Amount: {{ new_order.tot_price }}</p>
+        <label for="cust_id">Customer ID:</label>
+        <input type="text" id="cust_id" name="cust_id" placeholder="Enter the Customer ID"><br>
+        <label for="transaction">Transaction Type(Cash/Card):</label>
+        <input type="text" id="transaction" name="transaction" placeholder="Enter the Transaction Type(Cash/Card)"><br>
+        <label for="emp_id">Employee ID:</label>
+        <input type="text" id="emp_id" name="emp_id" placeholder="Enter the Employee ID performing the order"><br>
+        <input type="submit" value="Confirm Order">
+    </form>
+{% endif%}
+
+{% endblock content %}

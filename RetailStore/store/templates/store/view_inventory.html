@@ -1,0 +1,48 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+{% if details %}
+    <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Product name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        {% for row in details %}
+        <tr>
+            <td>{{row.product_id}}</td>
+            <td>{{row.product_name}}</td>
+            <td>{{row.price}}</td>
+            <td>{{row.quantity}}</td>
+            <td>{{row.discount}}</td>
+            <td><a href = "delete_inv/{{row.product_id}}">Delete</a></td>
+            <td><a href = "edit_inv/{{row.product_id}}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>You don't have any Product</p>
+{% endif %}
+
+{% endblock content %}

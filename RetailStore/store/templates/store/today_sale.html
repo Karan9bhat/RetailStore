@@ -1,0 +1,49 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+{% if details %}
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Staff ID</th>
+            <th>Order Time</th>
+            <th>Amount</th>
+            <th>Transaction ID</th>
+            <th>Transaction Type</th>
+        </tr>
+        {% for row in details %}
+        <tr>
+            <td>{{row.order_id}}</td>
+            <td>{{row.cust_id}}</td>
+            <td>{{row.staff_id}}</td>
+            <td>{{row.order_date}}</td>
+            <td>{{row.amount}}</td>
+            <td>{{row.transaction_id}}</td>
+            <td>{{row.transaction}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No Sale today</p>
+{% endif %}
+
+{% endblock content %}

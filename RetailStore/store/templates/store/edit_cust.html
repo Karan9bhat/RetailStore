@@ -1,0 +1,13 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<form method="post" action="/update_cust">
+    {% csrf_token %}
+    <input type="hidden" name="cust_id" value="{{details.0}}">
+    <input type="text" name="cust_name" value="{{details.1}}"><br>
+    <input type="tel" name="contact" value="{{details.2}}"><br>
+    <input type="text" name="address" value="{{details.3}}"><br>
+    <input type="submit" value="Update">
+</form>
+
+{% endblock content %}

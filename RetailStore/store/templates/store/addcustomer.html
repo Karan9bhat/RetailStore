@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<form action="{% url 'store:customer_register' %}" method="post">
+    {% csrf_token %}
+    <p>Customer Name</p><br>
+    <input type="text" name="cust_name" placeholder="Enter the Customer Name"><br><br>
+    <p>Contact Number</p><br>
+    <input type="tel" name="contact" placeholder="Contact Number"><br><br>
+    <p>Address</p><br>
+    <input type="text" name="address" placeholder="Address"><br><br>
+    <input type="submit" value="Add Customer">
+</form>
+
+
+{% endblock content %}

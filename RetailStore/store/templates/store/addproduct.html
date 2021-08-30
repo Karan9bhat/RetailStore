@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<form action="{% url 'store:product_register' %}" method="post">
+    {% csrf_token %}
+    <p>Price</p>
+    <input type="text" name="price" placeholder="Price of the product"><br><br>
+    <p>Quantity</p>
+    <input type="number" name="quantity" placeholder="Quantity of the product"><br><br>
+    <p>Product Name</p>
+    <input type="text" name="product_name" placeholder="Name of the product"><br><br>
+    <p>Discount</p>
+    <input type="number" name="discount" placeholder="Discount on the product"><br><br>
+    <input type="submit" value="Add Product">
+</form>
+</body>
+</html>
+
+{% endblock content %}

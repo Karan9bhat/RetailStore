@@ -1,0 +1,59 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+<form action="{% url 'store:cart' %}" method="Post">
+    {% csrf_token %}
+    <label for="product_name">Select Item:</label>
+    <select name="product_name", id="product_name">
+        {% if products %}
+            {% for product in products%}
+                <option value="{{product.product_name}}">{{product.product_name}}</option>
+            {% endfor %}
+        {% else %}
+            <option value="No Products">No Products</option>
+        {% endif %}</select><br>
+    <label for="quantity">Quantity</label>
+    <input type="number" name="quantity", id="quantity"><br>
+    <input type="submit" value="Add to cart"><br><br><br>
+</form>
+
+
+{% if Cart_Items %}
+<h3>Items in Cart</h3>
+    <table>
+        {% for row in Cart_Items %}
+        <tr>
+            <td>{{row.product_name}}</td>
+            <td>{{row.quantity}}</td>
+            <td>{{row.price}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+<form action="{% url 'store:order' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Proceed">
+</form>
+{% else %}
+    <p>Cart Empty</p>
+{% endif %}
+
+{% endblock content %}
